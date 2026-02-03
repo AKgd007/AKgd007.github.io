@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ajith Kumar | Unity Developer</title>
+
+  <!-- Font: Inter (Senior UX standard) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --surface: #f9fafb;
+      --text-primary: #111827;
+      --text-secondary: #4b5563;
+      --accent: #2563eb;
+      --accent-soft: rgba(37,99,235,0.08);
+      --border: #e5e7eb;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(#ffffff, #f9fafb);
+      color: var(--text-primary);
+      line-height: 1.75;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== LAYOUT ===== */
+    .container {
+      max-width: 960px;
+      margin: auto;
+      padding: 80px 20px;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      padding: 96px 20px 56px;
+      max-width: 960px;
+      margin: auto;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+      letter-spacing: -0.02em;
+    }
+
+    header p {
+      color: var(--text-secondary);
+      font-size: 1.15rem;
+      max-width: 680px;
+    }
+
+    header .links {
+      margin-top: 28px;
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      font-weight: 500;
+    }
+
+    /* ===== SECTION TITLES ===== */
+    section h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 32px;
+      letter-spacing: -0.01em;
+    }
+
+    /* ===== PROJECTS ===== */
+    .projects {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .project {
+      display: grid;
+      grid-template-columns: 1fr 180px;
+      gap: 24px;
+
+      padding: 32px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface);
+      transition: background 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .project:hover {
+      background: #ffffff;
+      box-shadow: 0 8px 30px rgba(17,24,39,0.06);
+    }
+
+    .project h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .project p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 18px;
+      max-width: 100%;
+    }
+
+    .project-media {
+      width: 100%;
+      height: 110px;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #e5e7eb;
+      border: 1px solid var(--border);
+    }
+
+    .project-media img,
+    .project-media gif {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .project .actions {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+    }
+
+    .project .actions a {
+      padding-bottom: 2px;
+      border-bottom: 1px solid transparent;
+    }
+
+    .project .actions a:hover {
+      border-color: var(--accent);
+    }
+
+    /* ===== SKILLS ===== */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .skill {
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(37,99,235,0.15);
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 48px 20px;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      background: #ffffff;
+    }
+
+    @media (max-width: 640px) {
+      header h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h1>Ajith Kumar</h1>
+    <p>
+      Results-driven Unity Developer with experience across <strong>2D &amp; 3D games</strong>,
+      <strong>XR (VR/AR)</strong>, and <strong>custom Unity Editor tools</strong>. Focused on building
+      clean, scalable gameplay systems and delivering production-ready interactive experiences.
+    </p>
+
+    <div class="links">
+      <a href="https://akmultimedia.itch.io/" target="_blank">itch.io</a>
+      <a href="https://www.youtube.com/@akgamedeveloper6305" target="_blank">YouTube</a>
+      <a href="https://www.linkedin.com/in/akgd/" target="_blank">LinkedIn</a>
+    </div>
+  </header>
+
+  <!-- PROJECTS -->
+  <section class="container">
+    <h2>Selected Work</h2>
+
+    <!-- GAMES -->
+    <h3 style="margin-bottom:16px;color:var(--text-secondary);font-weight:500;">Games</h3>
+    <div class="projects">
+
+      <div class="project">
+        <div>
+          <h3>Tap Gap</h3>
+          <p>One-touch 2D arcade game focused on timing precision and player feedback. Designed as a compact, replayable gameplay experience.</p>
+          <div class="actions">
+            <a href="https://akmultimedia.itch.io/tap-gap" target="_blank">Play on itch.io →</a>
+            <a href="https://www.youtube.com/watch?v=UAUhjTK7Slc" target="_blank">Watch gameplay →</a>
+          </div>
+        </div>
+        <div class="project-media">
+          <img src="https://via.placeholder.com/300x200.png?text=Tap+Gap" alt="Tap Gap gameplay" />
+        </div>
+      </div>
+
+      <div class="project">
+        <div>
+          <h3>Jump the Obstacle</h3>
+          <p>Reflex-based 2D obstacle game exploring jump mechanics, difficulty pacing, and responsive controls.</p>
+          <div class="actions">
+            <a href="https://akmultimedia.itch.io/jump-the-obstacle" target="_blank">Play on itch.io →</a>
+            <a href="https://www.youtube.com/watch?v=UAUhjTK7Slc" target="_blank">Watch gameplay →</a>
+          </div>
+        </div>
+        <div class="project-media">
+          <img src="https://via.placeholder.com/300x200.png?text=Jump+Obstacle" alt="Jump the Obstacle gameplay" />
+        </div>
+      </div>
+
+      <div class="project">
+        <div>
+          <h3>Car Game (Gameplay Prototype)</h3>
+          <p>Ongoing 2D car game prototype focusing on vehicle handling, camera behavior, and arcade-style physics. Currently in development.</p>
+          <div class="actions">
+            <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank">Watch gameplay →</a>
+          </div>
+        </div>
+        <div class="project-media">
+          <img src="https://via.placeholder.com/300x200.png?text=Car+Game" alt="Car Game prototype" />
+        </div>
+      </div>
+
+    </div>
+
+    <!-- XR PROJECTS -->
+    <h3 style="margin:48px 0 16px;color:var(--text-secondary);font-weight:500;">XR Projects</h3>
+    <div class="projects">
+
+      <div class="project">
+        <div>
+          <h3>XR Safety Training Modules</h3>
+          <p>Enterprise VR safety training experiences built using Unity and OpenXR, covering hazard identification, PPE validation, and consequence-based learning.</p>
+          <div class="actions">
+            <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank">Watch demo →</a>
+          </div>
+        </div>
+        <div class="project-media">
+          <img src="https://via.placeholder.com/300x200.png?text=XR+Project" alt="XR project" />
+        </div>
+      </div>
+
+    </div>
+
+    <!-- EDITOR TOOLS -->
+    <h3 style="margin:48px 0 16px;color:var(--text-secondary);font-weight:500;">Editor Tools</h3>
+    <div class="projects">
+
+      <div class="project">
+        <div>
+          <h3>Custom Unity Editor Tools</h3>
+          <p>Developed custom Unity Editor tools to streamline workflows, improve visualization, and accelerate content integration for production projects.</p>
+        </div>
+        <div class="project-media">
+          <img src="https://via.placeholder.com/300x200.png?text=Editor+Tools" alt="Unity Editor tools" />
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="container">
+    <h2>Skills</h2>
+    <div class="skills">
+      <span class="skill">Unity</span>
+      <span class="skill">C#</span>
+      <span class="skill">OpenXR</span>
+      <span class="skill">VR Interaction</span>
+      <span class="skill">Game Design</span>
+      <span class="skill">Photon Multiplayer</span>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="container">
+    <h2>Contact</h2>
+    <p>Email: ajithkumar405023@gmail.com</p>
+  </section>
+
+  <footer>
+    © 2026 Ajith Kumar
+  </footer>
+
+</body>
+</html>
