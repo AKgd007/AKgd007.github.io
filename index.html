@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,13 +11,15 @@
 
   <style>
     :root {
-      --bg: #ffffff;
-      --surface: #f9fafb;
-      --text-primary: #111827;
-      --text-secondary: #4b5563;
+      --bg: #f4f6fb;
+      --surface: #ffffff;
+      --surface-soft: #f8fafc;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
       --accent: #2563eb;
+      --accent-2: #22c55e;
       --accent-soft: rgba(37,99,235,0.08);
-      --border: #e5e7eb;
+      --border: #e2e8f0;
     }
 
     * {
@@ -27,7 +30,9 @@
     }
 
     body {
-      background: linear-gradient(#ffffff, #f9fafb);
+      background:
+        radial-gradient(1200px 400px at 50% -200px, rgba(37,99,235,0.08), transparent 60%),
+        linear-gradient(180deg, #f8fafc 0%, #f1f5f9 40%, #eef2ff 100%);
       color: var(--text-primary);
       line-height: 1.75;
     }
@@ -45,43 +50,114 @@
     .container {
       max-width: 960px;
       margin: auto;
-      padding: 80px 20px;
+      padding: 64px 20px; /* reduced vertical gap */
+      position: relative;
+    }
+
+    .container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 960px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--border), transparent);
+      opacity: 0.6; /* softer divider */
     }
 
     /* ===== HEADER ===== */
     header {
-      padding: 96px 20px 56px;
+      padding: 96px 20px 40px;
       max-width: 960px;
       margin: auto;
+      position: relative;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--border), transparent);
     }
 
     header h1 {
-      font-size: 2.8rem;
+      font-size: 3.2rem;
       font-weight: 600;
-      margin-bottom: 14px;
-      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+      letter-spacing: -0.03em;
+      position: relative;
+    }
+
+    header h1::after {
+      content: "";
+      display: block;
+      width: 56px;
+      height: 4px;
+      margin-top: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
     }
 
     header p {
       color: var(--text-secondary);
-      font-size: 1.15rem;
-      max-width: 680px;
+      font-size: 1.05rem;
+      max-width: 720px;
+      line-height: 1.85;
+      margin-top: 14px;
     }
 
     header .links {
-      margin-top: 28px;
-      display: flex;
-      gap: 24px;
-      flex-wrap: wrap;
-      font-weight: 500;
-    }
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.link-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #ffffff, #eef2ff);
+  border: 1px solid rgba(37,99,235,0.25);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.link-icon:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(37,99,235,0.15);
+  border-color: var(--accent);
+}
+
+.link-icon .icon {
+  font-size: 1rem;
+}
 
     /* ===== SECTION TITLES ===== */
     section h2 {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       font-weight: 600;
-      margin-bottom: 32px;
-      letter-spacing: -0.01em;
+      margin-bottom: 28px;
+      letter-spacing: -0.015em;
+      position: relative;
+    }
+
+    section h2::after {
+      content: "";
+      display: block;
+      width: 48px;
+      height: 3px;
+      margin-top: 8px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
     }
 
     /* ===== PROJECTS ===== */
@@ -95,31 +171,43 @@
       display: grid;
       grid-template-columns: 1fr 180px;
       gap: 24px;
-
-      padding: 32px;
+      padding: 28px 32px;
       border: 1px solid var(--border);
-      border-radius: 14px;
-      background: var(--surface);
-      transition: background 0.2s ease, box-shadow 0.2s ease;
+      border-radius: 16px;
+      background: linear-gradient(180deg, #ffffff, #f8fafc);
+      position: relative;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .project::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      border-radius: 16px 0 0 16px;
+      background: linear-gradient(180deg, var(--accent), var(--accent-2));
+      opacity: 0.35;
     }
 
     .project:hover {
-      background: #ffffff;
-      box-shadow: 0 8px 30px rgba(17,24,39,0.06);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(15,23,42,0.08);
     }
 
     .project h3 {
-      font-size: 1.15rem;
+      font-size: 1.18rem;
       font-weight: 600;
-      margin-bottom: 8px;
-      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+      letter-spacing: -0.015em;
     }
 
     .project p {
       color: var(--text-secondary);
-      font-size: 0.95rem;
-      margin-bottom: 18px;
-      max-width: 100%;
+      font-size: 0.94rem;
+      margin-bottom: 16px;
+      line-height: 1.7;
     }
 
     .project-media {
@@ -155,33 +243,95 @@
     }
 
     /* ===== SKILLS ===== */
+    .skill-group {
+      background: linear-gradient(180deg, #ffffff, var(--surface-soft));
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent-soft);
+      border-radius: 18px;
+      padding: 26px 26px 28px;
+      margin-bottom: 32px;
+    }
+
+    .skill-group h3 {
+      margin-bottom: 16px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+      position: relative;
+    }
+
+    .skill-group h3::after {
+      content: "";
+      display: block;
+      width: 24px;
+      height: 2px;
+      margin-top: 6px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+
     .skills {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px 12px;
     }
 
     .skill {
-      padding: 7px 14px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      border: 1px solid rgba(37,99,235,0.15);
-      font-size: 0.85rem;
+      padding: 9px 14px;
+      border-radius: 12px;
+      background: linear-gradient(180deg, #ffffff, #eef2ff); /* default highlighted */
+      border: 1px solid rgba(37,99,235,0.35);
+      font-size: 0.82rem;
       font-weight: 500;
+      color: var(--text-primary);
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .skill:hover {
+      background: linear-gradient(180deg, #ffffff, #e0e7ff); /* slightly stronger on hover */
+      border-color: var(--accent);
     }
 
     /* ===== FOOTER ===== */
     footer {
       border-top: 1px solid var(--border);
-      padding: 48px 20px;
+      padding: 56px 20px;
       text-align: center;
       color: var(--text-secondary);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       background: #ffffff;
     }
 
     @media (max-width: 640px) {
-      header h1 { font-size: 2.2rem; }
+      header {
+        padding: 64px 16px 40px;
+      }
+
+      header h1 {
+        font-size: 2.2rem;
+      }
+
+      header p {
+        font-size: 0.95rem;
+      }
+
+      .container {
+        padding: 56px 16px;
+      }
+
+      .project {
+        grid-template-columns: 1fr;
+      }
+
+      .project-media {
+        height: 160px;
+      }
+
+      .links {
+        gap: 16px;
+      }
+    }
     }
   </style>
 </head>
@@ -190,16 +340,31 @@
   <!-- HEADER -->
   <header>
     <h1>Ajith Kumar</h1>
+     <h2 class="hero-role">
+    Unity Developer · XR Training · Editor Tools
+  </h2>
     <p>
-      Results-driven Unity Developer with hands-on experience building 2D & 3D games, enterprise XR (VR/AR) training systems, and custom Unity Editor tools. Focused on performance, reusability, and delivering production-ready interactive experiences.
+      Unity Developer specializing in gameplay systems, enterprise XR training applications, and custom Unity Editor tools. Experienced in building scalable, performance-optimized 2D/3D experiences with a strong focus on clean architecture, reusability, and real-world production constraints..
     </p>
 
     <div class="links">
-      <a href="Ajith Kumar Resume.pdf" target="_blank">Download Resume</a>
-      <a href="https://akmultimedia.itch.io/" target="_blank">itch.io</a>
-      <a href="https://www.youtube.com/@akgamedeveloper6305" target="_blank">YouTube</a>
-      <a href="https://www.linkedin.com/in/akgd/" target="_blank">LinkedIn</a>
-    </div>
+  <a href="Ajith Kumar Resume.pdf" target="_blank" class="link-icon">
+    <span class="icon">📄</span>
+    <span>Download Resume</span>
+  </a>
+  <a href="https://akmultimedia.itch.io/" target="_blank" class="link-icon">
+    <span class="icon">🎮</span>
+    <span>itch.io</span>
+  </a>
+  <a href="https://www.youtube.com/@akgamedeveloper6305" target="_blank" class="link-icon">
+    <span class="icon">▶️</span>
+    <span>YouTube</span>
+  </a>
+  <a href="https://www.linkedin.com/in/akgd/" target="_blank" class="link-icon">
+    <span class="icon">💼</span>
+    <span>LinkedIn</span>
+  </a>
+</div>
   </header>
 
   <!-- PROJECTS -->
@@ -240,7 +405,7 @@
 
       <div class="project">
         <div>
-          <h3>Racing rivals</h3>
+          <h3>Racing Rivals</h3>
           <p>Racing Rivals is a top-down 2D racing game where the player competes against AI-controlled cars to complete laps and finish the race. The game features arcade-style car controls, lap tracking, AI opponent logic, and track/pathway management.</p>
           <div class="actions">
             <a href="https://akmultimedia.itch.io/racing-rivals" target="_blank">Play on itch.io →</a>
@@ -293,11 +458,14 @@
 
       <div class="project">
         <div>
-          <h3>Custom Unity Editor Tools</h3>
-          <p>Developed custom Unity Editor tools to streamline workflows, improve visualization, and accelerate content integration for production projects.</p>
+          <h3>Smart Bookmarks – Unity Editor Tool</h3>
+          <p>A productivity-focused Unity Editor extension that helps developers navigate complex scenes faster by bookmarking Scene View states and important GameObjects.</p>
+        <div class="actions">
+            <a href="https://assetstore.unity.com/preview/360856/1254796" target="_blank">View on Asset Store →</a>
+          </div>
         </div>
         <div class="project-media">
-          <img src="https://via.placeholder.com/300x200.png?text=Editor+Tools" alt="Unity Editor tools" />
+          <img src="SmartBookmarks.jpg" alt="Smart Bookmarks Unity Editor Tool" />
         </div>
       </div>
 
@@ -307,15 +475,72 @@
   <!-- SKILLS -->
   <section class="container">
     <h2>Skills</h2>
-    <div class="skills">
-      <span class="skill">Unity</span>
-      <span class="skill">C#</span>
-      <span class="skill">OpenXR</span>
-      <span class="skill">VR Interaction</span>
-      <span class="skill">Game Design</span>
-      <span class="skill">Photon Multiplayer</span>
-    </div>
-  </section>
+    <p style="color:var(--text-secondary);max-width:720px;margin-bottom:36px;">Focused on building scalable Unity systems, XR training experiences, and productivity tools with clean architecture and production-ready workflows.</p>
+
+   <div class="skill-group">
+  <h3>Core Unity & Gameplay</h3>
+  <div class="skills">
+    <span class="skill">Unity Engine</span>
+    <span class="skill">C#</span>
+    <span class="skill">Gameplay Architecture</span>
+    <span class="skill">ScriptableObject-based Systems</span>
+    <span class="skill">Unity Input System</span>
+    <span class="skill">2D & 3D Physics</span>
+  </div>
+</div>
+
+<div class="skill-group">
+  <h3>Architecture & System Design</h3>
+  <div class="skills">
+    <span class="skill">Modular Architecture</span>
+    <span class="skill">Reusable System Design</span>
+    <span class="skill">Event-driven Architecture</span>
+    <span class="skill">Data-driven Design</span>
+    <span class="skill">Scalable Game Frameworks</span>
+  </div>
+</div>
+
+<div class="skill-group">
+  <h3>XR Development</h3>
+  <div class="skills">
+    <span class="skill">OpenXR</span>
+    <span class="skill">VR Interaction Systems</span>
+    <span class="skill">Hand Tracking</span>
+    <span class="skill">XR Training Simulations</span>
+    <span class="skill">XR Performance Optimization</span>
+    <span class="skill">Meta Quest SDK</span>
+  </div>
+</div>
+
+<div class="skill-group">
+  <h3>Editor Tools & Productivity</h3>
+  <div class="skills">
+    <span class="skill">Unity Editor Scripting</span>
+    <span class="skill">Custom Inspectors</span>
+    <span class="skill">Editor Windows</span>
+    <span class="skill">Workflow Automation</span>
+    <span class="skill">Debugging & Visualization Tools</span>
+  </div>
+</div>
+
+<div class="skill-group">
+  <h3>Multiplayer & Platforms</h3>
+  <div class="skills">
+    <span class="skill">Photon Fusion</span>
+    <span class="skill">Mobile (Android)</span>
+    <span class="skill">WebGL</span>
+    <span class="skill">Performance & Build Optimization</span>
+    <span class="skill">Cross-platform Deployment</span>
+  </div>
+</div>
+
+<div class="skill-group">
+  <h3>Version Control & Development Tools</h3>
+  <div class="skills">
+    <span class="skill">Git & GitHub</span>
+    <span class="skill">AI-assisted Development</span>
+  </div>
+</div>
 
   <!-- CONTACT -->
   <section class="container">
